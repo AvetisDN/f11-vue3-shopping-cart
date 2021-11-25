@@ -34,6 +34,7 @@ export default createStore({
     },
     REMOVE_FROM_CART(state, index) {
       state.shoppingCart.splice(index, 1)
+      localStorage.shoppingCart = JSON.stringify(state.shoppingCart)
     }
   },
   actions: {
@@ -58,5 +59,13 @@ export default createStore({
       return state.shoppingCart.findIndex(item => item === id) !== -1
     },
     shoppingCart: (state) => state.shoppingCart,
+    shoppingCartData: (state) => {
+      const data = []
+      state.shoppingCart.map((id, index) => {
+        const foundProduct = state.products.find((prod) => prod.id === id)
+        data[index] = foundProduct
+      })
+      return data
+    }
   }
 });

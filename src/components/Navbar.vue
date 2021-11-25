@@ -10,7 +10,11 @@
         />
       </template>
       <template #end>
-          <CartInformer/>
+          <div class="p-d-flex">
+            <CartInformer/>
+            <div>&nbsp;&nbsp;</div>
+            <CartInformerAlt/>
+          </div>
       </template>
     </Menubar>
   </div>
@@ -19,9 +23,10 @@
 <script>
 import { ref } from "vue";
 import CartInformer from "./CartInformer";
+import CartInformerAlt from "./CartInformerAlt";
 
 export default {
-  components: {CartInformer},
+  components: {CartInformerAlt, CartInformer},
   setup() {
     const items = ref([
       {
